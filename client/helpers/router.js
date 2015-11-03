@@ -1,4 +1,17 @@
+Router.configure({
+    layoutTemplate: 'layout',
+    loadingTemplate: 'loading',
+    waitOn: function() {
+        return Meteor.subscribe('posts');
+    }
+});
+
 Router.map(function() {
+    
+     this.route('postsList', {
+        path: '/'
+    });
+    
     this.route('postPage', {
         path: '/posts/:_id',
         data: function() { return Posts.findOne(this.params._id); }
@@ -12,11 +25,9 @@ Router.map(function() {
 var requireLogin = function() {
     if(! Meteor.user()) {
         if(Meteor.loggingIn())
-            this.render(this.loadingTemplate);
+            this.render('loading');
         else
             this.render('accessDenied');
-        
-        this.stop();
     } else {
         this.next(); //add this on before action
     }
