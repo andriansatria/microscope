@@ -12,11 +12,13 @@ Router.map(function() {
 var requireLogin = function() {
     if(! Meteor.user()) {
         if(Meteor.loggingIn())
-            this.next();
+            this.render(this.loadingTemplate);
         else
             this.render('accessDenied');
         
         this.stop();
+    } else {
+        this.next(); //add this on before action
     }
 }
 
