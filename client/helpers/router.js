@@ -8,3 +8,16 @@ Router.map(function() {
         path:'/submit'
     });
 });
+
+var requireLogin = function() {
+    if(! Meteor.user()) {
+        if(Meteor.loggingIn())
+            this.next();
+        else
+            this.render('accessDenied');
+        
+        this.stop();
+    }
+}
+
+Router.before(requireLogin, {only:'postSubmit'});
