@@ -1,4 +1,4 @@
-var postsData = [{
+/*var postsData = [{
     title: 'Introducing Telescope',
     author: 'Sacha Greif',
     url: 'http://sachagreif.com/introducing-telescope/'
@@ -10,7 +10,9 @@ var postsData = [{
     title: 'The Meteor Book',
     author: 'Tom Coleman',
     url: 'http://themeteorbook.com'
-}];
+}];*/
 Template.postsList.helpers({
-    posts: postsData
+    posts: function() {
+        return Posts.find();
+    }
 });
