@@ -1,9 +1,6 @@
 <template name="layout">
     <div class="container">
-        <header class="navbar navbar-default navbar-static-top">
-            <a class="navbar-brand" href="{{pathFor 'postsList'}}">Microscope</a>
-        </header>
-
+        {{> header}}
         <div id="main" class="row-fluid">
             {{>yield}}
         </div>

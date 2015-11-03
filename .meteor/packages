@@ -20,3 +20,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 mizzao:bootstrap-3
 iron:router
 sacha:spin
+accounts-password
+ian:accounts-ui-bootstrap-3
+accounts-github
