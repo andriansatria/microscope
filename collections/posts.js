@@ -1,5 +1,10 @@
 Posts = new Meteor.Collection('posts');
 
+Posts.allow({
+    update : ownsDocument,
+    remove : ownsDocument
+});
+
 /*Posts.allow({
     insert:function(userId, doc) {
         //only allow posting if user log in
