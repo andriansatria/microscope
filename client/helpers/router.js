@@ -38,4 +38,8 @@ var requireLogin = function() {
     }
 }
 
-Router.before(requireLogin, {only:'postSubmit'});
+Router.before(requireLogin, {only: 'postSubmit'});
+Router.before(function(){
+    clearErrors(); 
+    this.next();
+});
