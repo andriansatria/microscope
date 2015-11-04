@@ -5,6 +5,12 @@ Posts.allow({
     remove : ownsDocument
 });
 
+Posts.deny({
+   update: function(userId, post, fieldNames) {
+       //may only edit the following two fields :
+       return (_.without(fieldNames, 'url', 'title').length>0);
+   } 
+});
 /*Posts.allow({
     insert:function(userId, doc) {
         //only allow posting if user log in
