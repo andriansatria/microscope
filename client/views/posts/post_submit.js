@@ -9,10 +9,17 @@ Template.postSubmit.events({
         }
 
         Meteor.call('post', post, function(error, id) {
-            if (error)
-                return alert(error.reason);
-
-            Router.go('postPage', {_id: id});
+            if (error) {
+                //display error to the user
+                throwError(error.reason);
+            
+                if(error.error===302)
+                    console.log('error')
+                    Router.go('postPage', {_id: error.details})
+                
+            } else {
+                 Router.go('postPage', {_id: id});
+            }       
 
         });
 
