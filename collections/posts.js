@@ -11,7 +11,6 @@ Meteor.methods({
     post: function(postAttributes) {
         var user = Meteor.user(),
             postWithSameLink = Posts.findOne({url:postAttributes.url});
-        
         //ensure the user is logged in
         if(!user)
             throw new Meteor.Error(401, "You need to login to post new stories");
@@ -28,7 +27,7 @@ Meteor.methods({
         //pick out the whitelisted keys
         var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'), {
             userId : user._id,
-            author : user.username,
+            author : user.emails[0].address,
             submitted : new Date().getTime()
         });
         
