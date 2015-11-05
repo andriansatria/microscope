@@ -6,6 +6,5 @@ throwError = function(message) {
 }
 
 clearErrors = function() {
-    console.log('error');
     Errors.remove({seen:true});
 }
