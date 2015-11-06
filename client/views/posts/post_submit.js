@@ -14,7 +14,6 @@ Template.postSubmit.events({
                 throwError(error.reason);
             
                 if(error.error===302)
-                    console.log('error')
                     Router.go('postPage', {_id: error.details})
                 
             } else {
